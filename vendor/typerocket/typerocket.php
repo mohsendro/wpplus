@@ -12,15 +12,9 @@ tr_resource_pages('ToJob', 'درخواست ها');
 
 
 
-
-
-
-
-
-
-
-
-
+// $test = (new \TypeRocket\Controllers); 
+// $test = (new \TypeRocket\Controllers\WPPostController); 
+// var_dump($test);
 
 
 

@@ -18,9 +18,33 @@ if( ! class_exists( 'WPPlus' ) ) {
         */
         public $wpplus_plugins_vendor_list = [
             [ 
+                'name'        => 'PHPackagist',
+                'description' => 'فریمورک نصب و استفاده از پکیج‌های PHP از مخزن Composer در وردپرس',
+                'direction'   => 'vendor/phpackagist/phpackagist.php',
+                'status'      => true
+            ],
+            [ 
+                'name'        => 'WPackagist',
+                'description' => 'فریمورک نصب و استفاده از افزونه‌‌ها و قالب‌های مخزن وردپرس بصورت پکیج‌های Composer در وردپرس',
+                'direction'   => 'vendor/wpackagist/wpackagist.php',
+                'status'      => true
+            ],
+            [ 
                 'name'        => 'Typerocket',
                 'description' => 'فریمورک ساختار MVC وردپرس',
                 'direction'   => 'vendor/typerocket/typerocket.php',
+                'status'      => true
+            ],
+            [ 
+                'name'        => 'Acorn',
+                'description' => 'فریمورک بارگذاری امکانات و پکیج‌های Laravel با رعایت قوانین و سلسه مراتب درون وردپرس',
+                'direction'   => 'vendor/acorn/acorn.php',
+                'status'      => false
+            ],
+            [ 
+                'name'        => 'WP-Router',
+                'description' => 'فریمورک ایجاد Template Route وردپرس',
+                'direction'   => 'vendor/wp-router-master/src/router.php',
                 'status'      => true
             ],
             [ 

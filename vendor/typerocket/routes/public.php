@@ -5,6 +5,7 @@
 |--------------------------------------------------------------------------
 */
 
+// include dirname( __FILE__ ) . '/hierarchy.php';
 
 // tr_route()->get()->match('path')->do('method@Controller');
 // tr_route()->post()->match('path')->do('method@Controller');
@@ -31,3 +32,9 @@ tr_route()->get()->match('resume/(\d+)', ['id'])->do('singlePublic@Resume');
 
 tr_route()->get()->match('request')->do('request@ToJob');
 tr_route()->post()->match('request2')->do('request2@ToJob');
+
+
+
+// tr_route_template()->on('home', function() {
+//     return 'Your new site index template';
+// });
