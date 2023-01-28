@@ -21,12 +21,17 @@ define( 'FORCE_SSL_ADMIN', true );
 
 
 /* Custom WordPress URL. */
-define( 'WP_CONTENT_URL', 'wpplus-content' );
+define( 'WP_CONTENT_DIR', dirname(__FILE__) . '/extensions' );
+define( 'WP_CONTENT_URL', 'http://' . $_SERVER['HTTP_HOST'] . 'wpplus-content' );
 define( 'UPLOADS',        'wpplus-uploads' );
-define( 'WP_PLUGIN_URL',  'wpplus-plugins' );
+define( 'WP_PLUGIN_DIR', dirname(__FILE__) . '/extensions/plugins' );
+define( 'WP_PLUGIN_URL',  'http://' . $_SERVER['HTTP_HOST'] . 'wpplus-plugins' );
 define( 'PLUGINDIR', dirname(__FILE__) . '/blog/wp-content/plugins' );
+register_theme_directory( dirname( __FILE__ ) . '/themes-dev' );
+define('WP_DEFAULT_THEME', 'twentyeleven');
+define( 'WPMU_PLUGIN_DIR', dirname(__FILE__) . '/extensions/builtin' );
+define( 'WPMU_PLUGIN_URL', 'http://mywebsite.com/extensions/builtin' );
 define( 'NOBLOGREDIRECT', 'http://example.com' );
-
 
 
 /* Disable Post Revisions. */

@@ -104,3 +104,6 @@ function tojob_ajax_handle_function() {
 // add_action( 'wp_ajax_nopriv_tojob_ajax_handle', 'tojob_ajax_handle_function' );
 add_action( 'wp_ajax_tojob_ajax_handle', 'tojob_ajax_handle_function' );  // For logged in users.
 */
+
+
+

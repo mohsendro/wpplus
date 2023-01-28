@@ -2,7 +2,7 @@
 /*
     Plugin Name: هسته پلاس
     Description: مجوعه ای از افزونه های کوچک برای توسعه هسته اصلی وردپرس که شامل موارد زیر می باشند:
-    Version: 1.0.0
+    Version: 1.0.1
     Author: محسن دروگر
     Author URI:  mohsendroo@yahoo.com
 */

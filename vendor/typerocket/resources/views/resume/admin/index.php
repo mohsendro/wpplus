@@ -23,4 +23,3 @@ foreach ($resume as $resume_detail) {
     echo "<hr>";
 
 }
-

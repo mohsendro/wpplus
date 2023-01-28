@@ -38,3 +38,14 @@ tr_route()->post()->match('request2')->do('request2@ToJob');
 // tr_route_template()->on('home', function() {
 //     return 'Your new site index template';
 // });
+
+// tr_template_router(function() {
+// 	return tr_view('blog.single');
+// });
+
+// tr_route()->get()->match('shop')->do(function() {
+    // use TypeRocket\Controllers\ResumeController as aaa;
+    // $test = new aaa;
+    // var_dump($test);
+//     echo 'Shop';
+// });
