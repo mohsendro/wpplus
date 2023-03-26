@@ -30,6 +30,12 @@ if( ! class_exists( 'WPPlus' ) ) {
                 'status'      => true
             ],
             [ 
+                'name'        => 'Codestar',
+                'description' => 'فریمورک پنل تنظیمات وردپرس',
+                'direction'   => 'vendor/codestar-framework/codestar-framework.php',
+                'status'      => true
+            ],
+            [ 
                 'name'        => 'Typerocket',
                 'description' => 'فریمورک ساختار MVC وردپرس',
                 'direction'   => 'vendor/typerocket/typerocket.php',
@@ -45,12 +51,6 @@ if( ! class_exists( 'WPPlus' ) ) {
                 'name'        => 'WP-Router',
                 'description' => 'فریمورک ایجاد Template Route وردپرس',
                 'direction'   => 'vendor/wp-router-master/src/router.php',
-                'status'      => true
-            ],
-            [ 
-                'name'        => 'Codestar',
-                'description' => 'فریمورک پنل تنظیمات وردپرس',
-                'direction'   => 'vendor/codestar-framework/codestar-framework.php',
                 'status'      => true
             ],
             [ 
