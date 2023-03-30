@@ -31,15 +31,3 @@ if( ! class_exists( 'General' ) ) {
 
 }
 $General = new General;
-
-
-
-
-
-
-
-
-
-
-
-

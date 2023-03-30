@@ -30,6 +30,12 @@ if( ! class_exists( 'WPPlus' ) ) {
                 'status'      => true
             ],
             [ 
+                'name'        => 'Acorn',
+                'description' => 'فریمورک بارگذاری امکانات و پکیج‌های Laravel با رعایت قوانین و سلسه مراتب درون وردپرس',
+                'direction'   => 'vendor/acorn/acorn.php',
+                'status'      => false
+            ],
+            [ 
                 'name'        => 'Codestar',
                 'description' => 'فریمورک پنل تنظیمات وردپرس',
                 'direction'   => 'vendor/codestar-framework/codestar-framework.php',
@@ -39,24 +45,6 @@ if( ! class_exists( 'WPPlus' ) ) {
                 'name'        => 'Typerocket',
                 'description' => 'فریمورک ساختار MVC وردپرس',
                 'direction'   => 'vendor/typerocket/typerocket.php',
-                'status'      => true
-            ],
-            [ 
-                'name'        => 'Acorn',
-                'description' => 'فریمورک بارگذاری امکانات و پکیج‌های Laravel با رعایت قوانین و سلسه مراتب درون وردپرس',
-                'direction'   => 'vendor/acorn/acorn.php',
-                'status'      => false
-            ],
-            [ 
-                'name'        => 'WP-Router',
-                'description' => 'فریمورک ایجاد Template Route وردپرس',
-                'direction'   => 'vendor/wp-router-master/src/router.php',
-                'status'      => true
-            ],
-            [ 
-                'name'        => 'Bootstrap',
-                'description' => 'کتابخانه طراحی صفحات واکنشگرا',
-                'direction'   => 'vendor/bootstrap/bootstrap.php',
                 'status'      => true
             ],           
         ];  
@@ -94,7 +82,13 @@ if( ! class_exists( 'WPPlus' ) ) {
             ],
         ]; 
         
-        public $wpplus_plugins_public_list = [    
+        public $wpplus_plugins_public_list = [ 
+            [ 
+                'name'        => 'Bootstrap',
+                'description' => 'کتابخانه طراحی صفحات واکنشگرا',
+                'direction'   => 'public/bootstrap/bootstrap.php',
+                'status'      => true
+            ],   
             [ 
                 'name'        => 'General',
                 'description' => 'ایجاد فایل های استایل و اسکریپت برای کل سایت',
