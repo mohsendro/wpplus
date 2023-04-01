@@ -10,6 +10,10 @@ class CategoryController extends WPTermController
 {
     protected $modelClass = Category::class;
 
+    public function home(Category $category, Option $option, $param) {
+
+    }
+
     public function category(Category $category, Option $option, $cat_name, $number = 1)
     {
         $where_option = [

@@ -1,28 +1,42 @@
 <?php
 namespace App\Controllers;
 
-use App\Models\Advertising;
+use App\Models\PostTypeSample;
 use App\Models\Option;
 use TypeRocket\Controllers\WPPostController;
 use TypeRocket\Http\Request;
 
-class AdvertisingController extends WPPostController
+class PostTypeSampleController extends WPPostController
 {
-    protected $modelClass = Advertising::class;   
+    protected $modelClass = PostTypeSample::class;   
 
-    public function home(Advertising $post, Option $option)
+    public function home(PostTypeSample $post, Option $option)
     {
-        $where = [
+        $where_option = [
             [
                 'column'   => 'option_name',
                 'operator' => '=',
                 'value'    => 'posts_per_page'
             ]
         ];
-        $option = $option->find()->where($where)->select('option_value')->get()->toArray();
+        $option = $option->find()->where($where_option)->select('option_value')->get()->toArray();
         $option = $option[0]['option_value'];
 
-        $posts = $post->findAll()->where('post_status', '=', 'publish')->orderBy('id', 'DESC');
+        $where_post = [
+            [
+                'column'   => 'post_status',
+                'operator' => '=',
+                'value'    => 'publish'
+            ]
+        ];
+        $whereMeta_post = [
+            // [
+            //     'column'   => 'gallery_in_site',
+            //     'operator' => '=',
+            //     'value'    => 1
+            // ]
+        ];
+        $posts = $post->findAll()->with('meta')->whereMeta($whereMeta_post)->where($where_post)->orderBy('id', 'DESC');
         $posts_data = $posts; 
         $posts = $posts->get();
 
@@ -40,30 +54,44 @@ class AdvertisingController extends WPPostController
             $total_page = 0;
             $current_page = 0;
             
-        }
+        }      
 
-        return tr_view('public.advertising', compact('posts', 'count', 'total_page', 'current_page') );
+        return tr_view('home', compact('posts', 'count', 'total_page', 'current_page') );
     }
 
-    public function page(Advertising $post, Option $option)
+    public function page(PostTypeSample $post, Option $option)
     {
         // tr_redirect()->toURL(home_url('/blog/'))->now();
         return include( get_query_template( '404' ) );
     }
 
-    public function archive(Advertising $post, Option $option, $number)
+    public function archive(PostTypeSample $post, Option $option, $number)
     {
-        $where = [
+        $where_option = [
             [
                 'column'   => 'option_name',
                 'operator' => '=',
                 'value'    => 'posts_per_page'
             ]
         ];
-        $option = $option->find()->where($where)->select('option_value')->get()->toArray();
+        $option = $option->find()->where($where_option)->select('option_value')->get()->toArray();
         $option = $option[0]['option_value'];
 
-        $posts = $post->findAll()->where('post_status', '=', 'publish')->orderBy('id', 'DESC');
+        $where_post = [
+            [
+                'column'   => 'post_status',
+                'operator' => '=',
+                'value'    => 'publish'
+            ]
+        ];
+        $whereMeta_post = [
+            // [
+            //     'column'   => 'gallery_in_site',
+            //     'operator' => '=',
+            //     'value'    => 1
+            // ]
+        ];
+        $posts = $post->findAll()->with('meta')->whereMeta($whereMeta_post)->where($where_post)->orderBy('id', 'DESC');
         $posts_data = $posts; 
         $posts = $posts->get();
 
@@ -77,7 +105,7 @@ class AdvertisingController extends WPPostController
                 $posts = $posts_data->take($option, ($number-1)*$option)->get();
                 if( $number == 1 ) {
                     // $posts = $posts->take($option, 1);
-                    tr_redirect()->toURL(home_url('/advertising/'))->now();
+                    tr_redirect()->toURL(home_url('/blog/'))->now();
                 }
             } else {
                 // $posts = $posts->take($option, $number);
@@ -94,12 +122,12 @@ class AdvertisingController extends WPPostController
             
         } 
 
-        return tr_view('public.advertising', compact('posts', 'count', 'total_page', 'current_page') );
+        return tr_view('home', compact('posts', 'count', 'total_page', 'current_page') );
     }
 
-    public function single(Advertising $post, $slug)
+    public function single(PostTypeSample $post, $slug)
     {
-        $where = [
+        $where_post = [
             [
                 'column'   => 'post_status',
                 'operator' => '=',
@@ -112,12 +140,16 @@ class AdvertisingController extends WPPostController
                 'value'    => $slug
             ]
         ];
-        $post = $post->first()->where($where)->get();
+        $post = $post->first()->with('meta')->where($where_post)->get();
 
-        if( $post ){
-            return tr_view('public.single-advertising', compact('post', 'slug') );
+        if( $post ) {
+
+            return tr_view('single-post', compact('post', 'slug') );
+
         } else {
+
             return include( get_query_template( '404' ) );
+
         }
-    } 
+    }
 }

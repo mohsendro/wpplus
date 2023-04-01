@@ -10,6 +10,10 @@ class TagController extends WPTermController
 {
     protected $modelClass = Tag::class;
 
+    public function home(Tag $tag, Option $option, $param) {
+
+    }
+
     public function tag(Tag $tag, Option $option, $tag_name, $number = 1)
     {
         $where_option = [
