@@ -11,6 +11,9 @@ tr_resource_pages('Resume', 'رزومه ها');
 tr_resource_pages('ToJob', 'درخواست ها');
 
 
+register_theme_directory( dirname( __FILE__ ) . '/resources/themes/' );
+
+
 
 // $test = (new \TypeRocket\Controllers); 
 // $test = (new \TypeRocket\Controllers\WPPostController); 
