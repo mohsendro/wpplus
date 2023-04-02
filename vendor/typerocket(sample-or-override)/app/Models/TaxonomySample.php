@@ -3,19 +3,19 @@ namespace App\Models;
 
 use TypeRocket\Models\WPTerm;
 
-class GalleryCat extends WPTerm
+class TaxonomySample extends WPTerm
 {
-    public const TAXONOMY = 'gallery_cat';
+    public const TAXONOMY = 'taxonomysample';
 
-    // public function gallerys()
+    // public function posts()
     // {
-    //     return $this->belongsToPost(Gallery::class);
+    //     return $this->belongsToPost(PostTypeSample::class);
     // }
 
     public function posts()
     {
-        // $model = '\App\Models\Gallery';
-        return $this->belongsToPost(Gallery::class, function($posts) {
+        // $model = '\App\Models\PostTypeSample';
+        return $this->belongsToPost(PostTypeSample::class, function($posts) {
             $where = [
                 [
                     'column'   => 'post_status',
@@ -23,7 +23,7 @@ class GalleryCat extends WPTerm
                     'value'    => 'publish'
                 ]
             ];
-            $posts->with('meta')->whereMeta('gallery_in_site', '=', 1)->where($where)->orderBy('id', 'DESC');
+            $posts->where($where)->orderBy('id', 'DESC');
         });
     }
 }

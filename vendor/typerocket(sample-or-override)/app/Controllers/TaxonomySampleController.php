@@ -1,32 +1,43 @@
 <?php
 namespace App\Controllers;
 
-use App\Models\AdcertisingCat;
+use App\Models\TaxonomySample;
 use App\Models\Option;
 use TypeRocket\Controllers\WPTermController;
 use TypeRocket\Http\Request;
 
-class AdcertisingCatController extends WPTermController
+class TaxonomySampleController extends WPTermController
 {
-    protected $modelClass = AdcertisingCat::class;
+    protected $modelClass = TaxonomySample::class;
 
-    public function category(AdcertisingCat $category, Option $option, $cat_name, $number = 1)
+    public function home(TaxonomySample $taxonomy, Option $option, $param) {
+
+    }
+
+    public function category(TaxonomySample $taxonomy, Option $option, $taxonomy_name, $number = 1)
     {
-        $where = [
+        $where_option = [
             [
                 'column'   => 'option_name',
                 'operator' => '=',
                 'value'    => 'posts_per_page'
             ]
         ];
-        $option = $option->find()->where($where)->select('option_value')->get()->toArray();
+        $option = $option->find()->where($where_option)->select('option_value')->get()->toArray();
         $option = $option[0]['option_value'];
 
-        $category = $category->first()->where('slug', '=', $cat_name)->get();
+        $where_taxonomy = [
+            [
+                'column'   => 'slug',
+                'operator' => '=',
+                'value'    => $taxonomy_name
+            ]
+        ];
+        $taxonomy = $taxonomy->first()->where($where_taxonomy)->get();
 
-        if( $category != null || $category > 0 )  {
+        if( $taxonomy != null || $taxonomy > 0 )  {
 
-            $posts = $category->posts();
+            $posts = $taxonomy->posts();
             $posts_data = $posts;
             $posts = $posts->get();
 
@@ -40,11 +51,11 @@ class AdcertisingCatController extends WPTermController
                 if( (intval($number) <= $total_page) && (intval($number) >= 1) ) {
                     $posts = $posts_data->take($option, ($number-1)*$option)->get();
                     // if( $number == 1 ) {
-                        // tr_redirect()->toURL(home_url('/advertising-cat/' . $category->slug))->now();
+                        // tr_redirect()->toURL(home_url('/TaxonomySample/' . $uncategorized->slug))->now();
                     // }
                 } else {
                     // $posts = $posts->take($option, $number);
-                    // tr_redirect()->toURL(home_url('/blog/'))->now();
+                    // tr_redirect()->toURL(home_url('/TaxonomySample/'))->now();
                     return include( get_query_template( '404' ) );
                 }
 
@@ -62,27 +73,34 @@ class AdcertisingCatController extends WPTermController
             return include( get_query_template( '404' ) );
 
         }
-
-        return tr_view('public.advertising-cat', compact('category', 'posts', 'count', 'total_page', 'current_page') );
+        
+        return tr_view('TaxonomySample', compact('taxonomy', 'posts', 'count', 'total_page', 'current_page') );
     }
 
-    public function archive(AdcertisingCat $category, Option $option, $cat_name, $number)
+    public function archive(TaxonomySample $taxonomy, Option $option, $taxonomy_name, $number)
     {
-        $where = [
+        $where_option = [
             [
                 'column'   => 'option_name',
                 'operator' => '=',
                 'value'    => 'posts_per_page'
             ]
         ];
-        $option = $option->find()->where($where)->select('option_value')->get()->toArray();
+        $option = $option->find()->where($where_option)->select('option_value')->get()->toArray();
         $option = $option[0]['option_value'];
 
-        $category = $category->first()->where('slug', '=', $cat_name)->get();
+        $where_taxonomy = [
+            [
+                'column'   => 'slug',
+                'operator' => '=',
+                'value'    => $taxonomy_name
+            ]
+        ];
+        $taxonomy = $taxonomy->first()->where($where_taxonomy)->get();
 
-        if( $category != null || $category > 0 )  {
+        if( $taxonomy != null || $taxonomy > 0 )  {
 
-            $posts = $category->posts();
+            $posts = $taxonomy->posts();
             $posts_data = $posts;
             $posts = $posts->get();
 
@@ -96,11 +114,11 @@ class AdcertisingCatController extends WPTermController
                 if( (intval($number) <= $total_page) && (intval($number) >= 1) ) {
                     $posts = $posts_data->take($option, ($number-1)*$option)->get();
                     if( $number == 1 ) {
-                        tr_redirect()->toURL(home_url('/advertising-cat/' . $category->slug))->now();
+                        tr_redirect()->toURL(home_url('/TaxonomySample/' . $taxonomy->slug))->now();
                     }
                 } else {
                     // $posts = $posts->take($option, $number);
-                    // tr_redirect()->toURL(home_url('/blog/'))->now();
+                    // tr_redirect()->toURL(home_url('/TaxonomySample/'))->now();
                     return include( get_query_template( '404' ) );
                 }
                 
@@ -117,8 +135,8 @@ class AdcertisingCatController extends WPTermController
 
             return include( get_query_template( '404' ) );
 
-        }
+        }       
 
-        return tr_view('public.advertising-cat', compact('category', 'posts', 'count', 'total_page', 'current_page') );
+        return tr_view('TaxonomySample', compact('taxonomy', 'posts', 'count', 'total_page', 'current_page') );
     }
 }

@@ -23,4 +23,4 @@ if ( ! defined( 'ABSPATH' ) ) { die; } // Cannot access directly.
     </title>
     <?php wp_head(); ?>
 </head>
-<body <?php body_class(); ?> <?php body_class('overflow'); ?> >
+<body <?php body_class('overflow'); ?> >

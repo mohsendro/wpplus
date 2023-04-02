@@ -18,14 +18,14 @@ class SearchController extends WPPostController
 
     public function archive(Post $post, Option $option, $param)
     {
-        $where = [
+        $where_option = [
             [
                 'column'   => 'option_name',
                 'operator' => '=',
                 'value'    => 'posts_per_page'
             ]
         ];
-        $option = $option->find()->where($where)->select('option_value')->get()->toArray();
+        $option = $option->find()->where($where_option)->select('option_value')->get()->toArray();
         $option = $option[0]['option_value'];
 
         $param = urldecode($param);
@@ -42,7 +42,14 @@ class SearchController extends WPPostController
                 'value'    =>  '%'.$param.'%'
             ]
         ];
-        $posts = $post->findAll()->where($where_search)->orderBy('id', 'DESC');
+        $whereMeta_search = [
+            // [
+            //     'column'   => 'gallery_in_site',
+            //     'operator' => '=',
+            //     'value'    => 1
+            // ]
+        ];
+        $posts = $post->findAll()->with('meta')->whereMeta($whereMeta_search)->where($where_search)->orderBy('id', 'DESC');
         $posts_data = $posts; 
         $posts = $posts->get(); 
         
@@ -66,7 +73,7 @@ class SearchController extends WPPostController
                     }
                 } else {
                     // $posts = $posts->take($option, $_GET['page']);
-                    // tr_redirect()->toURL(home_url('/blog/'))->now();
+                    // tr_redirect()->toURL(home_url('/search/'))->now();
                     return include( get_query_template( '404' ) );
                 } 
             } else {
@@ -82,6 +89,6 @@ class SearchController extends WPPostController
             
         }
                 
-        return tr_view('public.search', compact('posts', 'count', 'total_page', 'current_page', 'param') );
+        return tr_view('search', compact('posts', 'count', 'total_page', 'current_page', 'param') );
     }
 }

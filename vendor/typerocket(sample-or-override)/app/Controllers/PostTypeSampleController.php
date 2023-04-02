@@ -56,12 +56,12 @@ class PostTypeSampleController extends WPPostController
             
         }      
 
-        return tr_view('home', compact('posts', 'count', 'total_page', 'current_page') );
+        return tr_view('PostTypeSample', compact('posts', 'count', 'total_page', 'current_page') );
     }
 
     public function page(PostTypeSample $post, Option $option)
     {
-        // tr_redirect()->toURL(home_url('/blog/'))->now();
+        // tr_redirect()->toURL(home_url('/PostTypeSample/'))->now();
         return include( get_query_template( '404' ) );
     }
 
@@ -105,11 +105,11 @@ class PostTypeSampleController extends WPPostController
                 $posts = $posts_data->take($option, ($number-1)*$option)->get();
                 if( $number == 1 ) {
                     // $posts = $posts->take($option, 1);
-                    tr_redirect()->toURL(home_url('/blog/'))->now();
+                    tr_redirect()->toURL(home_url('/PostTypeSample/'))->now();
                 }
             } else {
                 // $posts = $posts->take($option, $number);
-                // tr_redirect()->toURL(home_url('/blog/'))->now();
+                // tr_redirect()->toURL(home_url('/PostTypeSample/'))->now();
                 return include( get_query_template( '404' ) );
             }
 
@@ -122,7 +122,7 @@ class PostTypeSampleController extends WPPostController
             
         } 
 
-        return tr_view('home', compact('posts', 'count', 'total_page', 'current_page') );
+        return tr_view('PostTypeSample', compact('posts', 'count', 'total_page', 'current_page') );
     }
 
     public function single(PostTypeSample $post, $slug)
@@ -144,7 +144,7 @@ class PostTypeSampleController extends WPPostController
 
         if( $post ) {
 
-            return tr_view('single-post', compact('post', 'slug') );
+            return tr_view('single-PostTypeSample', compact('post', 'slug') );
 
         } else {
 

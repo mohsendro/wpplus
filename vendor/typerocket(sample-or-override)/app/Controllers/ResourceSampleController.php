@@ -1,23 +1,21 @@
 <?php
 namespace App\Controllers;
 
-use App\Models\Company;
+use App\Models\ResourceSample;
 use App\Models\Option;
 use TypeRocket\Controllers\Controller;
 use TypeRocket\Http\Request;
 
-class CompanyController extends Controller
+class ResourceSampleController extends Controller
 {
     /**
      * The index page for admin
      *
      * @return mixed
      */
-    public function index(Company $company)
+    public function index(ResourceSample $resource)
     {
-        $company2 = $company->findAll()->get();
-        $job     = $company->findById(1)->job()->get(); // ORM Model Relationships
-        return tr_view('company.admin.index', compact('company2', 'job') );
+        // TODO: Implement index() method.
     }
 
     /**
@@ -27,7 +25,7 @@ class CompanyController extends Controller
      */
     public function add()
     {
-        return tr_view('company.admin.add');
+        // TODO: Implement add() method.
     }
 
     /**
@@ -37,14 +35,9 @@ class CompanyController extends Controller
      *
      * @return mixed
      */
-    public function create(Company $company)
+    public function create(ResourceSample $resource)
     {
-        $tr_request = tr_request(); //var_dump($tr_request);
-        $company->title = $tr_request->getDataPost('company_add_title');
-        $company->content = $tr_request->getDataPost('company_add_content');
-        $company->save(); 
-        tr_response()->flashNext('شرکت جدید ثبت شد'); 
-        return tr_redirect()->toPage('company', 'index');
+        // TODO: Implement create() method.
     }
 
     /**
@@ -54,16 +47,9 @@ class CompanyController extends Controller
      *
      * @return mixed
      */
-    public function edit(Company $company)
+    public function edit(ResourceSample $resource)
     {
-        // $id = $_GET['post'];
-        // $id = $_GET["route_args"];
-        // $company = $company->where('id', '=' , $id)->get();
-        if( isset($company) ) {
-            return tr_view('company.admin.edit', compact('company'));
-        } else {
-            echo "همچین شناسه ای وجود ندارد";
-        }
+        // TODO: Implement edit() method.
     }
 
     /**
@@ -75,14 +61,9 @@ class CompanyController extends Controller
      *
      * @return mixed
      */
-    public function update(Company $company)
+    public function update(ResourceSample $resource)
     {
-        $tr_request = tr_request();
-        $company->title   = $tr_request->getDataPost('company_edit_title');
-        $company->content = $tr_request->getDataPost('company_edit_content');
-        $company->save(); 
-        tr_response()->flashNext('شرکت بروزرسانی شد'); 
-        return tr_redirect()->toPage('company', 'edit', $company->getID() );
+        // TODO: Implement update() method.
     }
 
     /**
@@ -92,9 +73,9 @@ class CompanyController extends Controller
      *
      * @return mixed
      */
-    public function show(Company $company)
+    public function show(ResourceSample $resource)
     {
-        // return tr_view('company.admin.show', ['company' => $company] );
+        // TODO: Implement show() method.
     }
 
     /**
@@ -104,9 +85,9 @@ class CompanyController extends Controller
      *
      * @return mixed
      */
-    public function delete(Company $company)
+    public function delete(ResourceSample $resource)
     {
-        return tr_view('company.admin.delete', compact('company') );
+        // TODO: Implement delete() method.
     }
 
     /**
@@ -118,11 +99,9 @@ class CompanyController extends Controller
      *
      * @return mixed
      */
-    public function destroy(Company $company)
+    public function destroy(ResourceSample $resource)
     {
-        $company->delete();
-        tr_response()->flashNext('شرکت مورد نظرحذف شد', 'warning');
-        return tr_redirect()->toPage('company', 'index');
+        // TODO: Implement destroy() method.
     }
 
     /**
@@ -130,10 +109,9 @@ class CompanyController extends Controller
      *
      * @return mixed
      */
-    public function archivePublic(Company $company)
+    public function archivePublic(ResourceSample $resource)
     {
-        $company = $company->findAll()->get()->toArray();
-        return tr_view('company.public.archivePublic', compact('company') );
+        // TODO: Implement archivePublic() method.
     }
 
     /**
@@ -141,24 +119,8 @@ class CompanyController extends Controller
      *
      * @return mixed
      */
-    public function singlePublic(Company $company, $id)
+    public function singlePublic(ResourceSample $resource, $id)
     {
-        $company = $company->where('id', '=' , $id)->get();
-        if( isset($company) ) {
-            $company = $company->toArray();
-            return tr_view('company.public.singlePublic', compact('company') );
-        } else {
-            echo "همچین شناسه ای وجود ندارد";
-        }
+        // TODO: Implement archivePublic() method.
     }
-
 }
-
-
-// TODO: Implement add() method.
-// TODO: Implement create() method.
-// TODO: Implement edit() method.
-// TODO: Implement update() method.
-// TODO: Implement show() method.
-// TODO: Implement delete() method.
-// TODO: Implement destroy() method.

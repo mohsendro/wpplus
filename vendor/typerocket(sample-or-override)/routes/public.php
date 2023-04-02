@@ -43,6 +43,7 @@
 
 // Author
 // tr_route()->get()->match('/author')->do('home@UserController');
+// tr_route()->get()->match('/author/page')->do('page@UserController');
 // tr_route()->get()->match('/author/page/([^\/]+)', ['number'])->do('archive@UserController');
 // tr_route()->get()->match('/author/([^\/]+)', ['slug'])->do('single@UserController'); // single
 
@@ -50,4 +51,5 @@
 // tr_route()->get()->match('/post-type')->do('home@PostTypeSampleController');
 
 // Search
+// tr_route()->get()->match('/search')->do('page@SearchController');
 // tr_route()->get()->match('/search/([^\/]+)', ['param'])->do('archive@SearchController');

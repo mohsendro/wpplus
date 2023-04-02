@@ -3,12 +3,12 @@ namespace App\Models;
 
 use TypeRocket\Models\WPPost;
 
-class Gallery extends WPPost
+class PostTypeSample extends WPPost
 {
-    public const POST_TYPE = 'gallery';
+    public const POST_TYPE = 'posttypesample';
 
-    public function gaallery_cat()
+    public function posttypesample_taxonomy()
     {
-        return $this->belongsToTaxonomy(GalleryCat::class, GalleryCat::TAXONOMY);
+        return $this->belongsToTaxonomy(TaxonomySample::class, TaxonomySample::TAXONOMY);
     }
 }
