@@ -23,43 +23,30 @@ require_once plugin_dir_path(__FILE__) . 'functions/snippets/enqueue.php';
 // Post Types
 require_once plugin_dir_path(__FILE__) . 'functions/posttype/page.php';
 require_once plugin_dir_path(__FILE__) . 'functions/posttype/post.php';
-require_once plugin_dir_path(__FILE__) . 'functions/posttype/advertising.php';
-require_once plugin_dir_path(__FILE__) . 'functions/posttype/project.php';
-require_once plugin_dir_path(__FILE__) . 'functions/posttype/consultant.php';
+// require_once plugin_dir_path(__FILE__) . 'functions/posttype/posttypesample.php';
 
 // Taxonomies
-require_once plugin_dir_path(__FILE__) . 'functions/taxonomy/category.php';
-require_once plugin_dir_path(__FILE__) . 'functions/taxonomy/tag.php';
-require_once plugin_dir_path(__FILE__) . 'functions/taxonomy/advertising_cat.php';
+// require_once plugin_dir_path(__FILE__) . 'functions/taxonomy/category.php';
+// require_once plugin_dir_path(__FILE__) . 'functions/taxonomy/tag.php';
+// require_once plugin_dir_path(__FILE__) . 'functions/taxonomy/taxonomysample.php';
 
 // Meta Boxes
-require_once plugin_dir_path(__FILE__) . 'functions/metabox/user.php';
-require_once plugin_dir_path(__FILE__) . 'functions/metabox/page.php';
-require_once plugin_dir_path(__FILE__) . 'functions/metabox/post.php';
-require_once plugin_dir_path(__FILE__) . 'functions/metabox/advertising.php';
-require_once plugin_dir_path(__FILE__) . 'functions/metabox/project.php';
-require_once plugin_dir_path(__FILE__) . 'functions/metabox/consultant.php';
+// require_once plugin_dir_path(__FILE__) . 'functions/metabox/metaboxsample.php';
 
 // Resource
-// require_once plugin_dir_path(__FILE__) . 'functions/metabox/user.php';
+// require_once plugin_dir_path(__FILE__) . 'functions/resource/resourcesample.php';
 
 // Menu
-require_once plugin_dir_path(__FILE__) . 'functions/menu/forms.php';
-require_once plugin_dir_path(__FILE__) . 'functions/menu/expert.php';
-require_once plugin_dir_path(__FILE__) . 'functions/menu/request.php';
-require_once plugin_dir_path(__FILE__) . 'functions/menu/counseling.php';
+// require_once plugin_dir_path(__FILE__) . 'functions/menu/menusample.php';
 
 // Table
-// require_once plugin_dir_path(__FILE__) . 'functions/table/forms.php';
-// require_once plugin_dir_path(__FILE__) . 'functions/table/expert.php';
-// require_once plugin_dir_path(__FILE__) . 'functions/table/request.php';
-// require_once plugin_dir_path(__FILE__) . 'functions/table/counseling.php';
+// require_once plugin_dir_path(__FILE__) . 'functions/table/tablesample.php';
 
 // Columns
-require_once plugin_dir_path(__FILE__) . 'functions/column/product.php';
-require_once plugin_dir_path(__FILE__) . 'functions/column/order.php';
-require_once plugin_dir_path(__FILE__) . 'functions/column/line-item.php';
+// require_once plugin_dir_path(__FILE__) . 'functions/column/columnsample.php';
 
 // Roles
-require_once plugin_dir_path(__FILE__) . 'functions/role/graphicer.php';
-require_once plugin_dir_path(__FILE__) . 'functions/role/photographer.php';
+// require_once plugin_dir_path(__FILE__) . 'functions/role/rolesample.php';
+
+// Ajax Handlers
+// require_once plugin_dir_path(__FILE__) . 'functions/ajax/handlesample.php';

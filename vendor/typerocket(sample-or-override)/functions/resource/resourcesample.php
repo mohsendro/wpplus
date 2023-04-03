@@ -2,4 +2,4 @@
 
 if ( ! defined( 'ABSPATH' ) ) { die; } // Cannot access directly.
 
-// Meta Box: consultant - متادیتای برگه
+// Resource: resource-sample - منابع نمونه

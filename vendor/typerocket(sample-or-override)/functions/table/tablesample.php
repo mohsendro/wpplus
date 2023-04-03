@@ -2,25 +2,25 @@
 
 if ( ! defined( 'ABSPATH' ) ) { die; } // Cannot access directly.
 
-// Table: expert - جدول درخواست کارشناسی
+// Table: table-sample - نمونه جدول
 
 // Plugin menu callback function
-function forms_expert_list_table_init() {
+function table_sample_list_table_init() {
 
     // Creating an instance   
-    $formsExpertTable = new Forms_Expert_List_Table();
+    $tableSample = new Table_Sample_List_Table();
 
     echo "<div class='wrap'>";
-      echo "<h1 class='wp-heading-inline'>درخواست‌ها</h1>";
+      echo "<h1 class='wp-heading-inline'>عنوان جدول</h1>";
       echo "<hr class='wp-header-end'>";
           // Prepare table
-          $formsExpertTable->prepare_items();
+          $tableSample->prepare_items();
           echo "<form method='get'>";
-                echo "<input type='hidden' name='page' value='forms-expert' />";
-                $formsExpertTable->search_box('جستجو', 'search_id');
+                echo "<input type='hidden' name='page' value='table-sample' />";
+                $tableSample->search_box('جستجو', 'search_id');
                 //Display table
-                // if( isset( $_GET['forms_expert_id'] ) ) {
-                      $formsExpertTable->display();
+                // if( isset( $_GET['table_sample_id'] ) ) {
+                      $tableSample->display();
                 // } else {
                     //   echo 'پیغام دلخواه...';
                 // }
@@ -28,7 +28,7 @@ function forms_expert_list_table_init() {
     echo "</div>";
 
 }
-forms_expert_list_table_init();
+table_sample_list_table_init();
 
 
 // Loading table class
@@ -39,17 +39,14 @@ if( !class_exists('WP_List_Table') ) {
 }
 
 // Extending class
-class Forms_Expert_List_Table extends WP_List_Table {
+class Table_Sample_List_Table extends WP_List_Table {
 
     private $table_data;
 
-    private function get_forms_expert_data($search = "") {
+    private function get_table_sample_data($search = "") {
 
-        $FormExpertController = new \App\Controllers\FormExpertController;
-        $IndexFormExpertController  = $FormExpertController::index();
-        $EditFormExpertController   = $FormExpertController::edit();
-        $DeleteFormExpertController = $FormExpertController::delete();
-        $this->table_data = $IndexFormExpertController;
+        $TableSampleController = new \App\Controllers\SampleController;
+        $this->table_data = $TableSampleController::method();
         return $this->table_data;
           
     }
@@ -74,9 +71,9 @@ class Forms_Expert_List_Table extends WP_List_Table {
     function prepare_items() {
 
           if ( isset( $_GET['page'] ) && isset( $_GET['s'] ) ) {
-            $this->table_data = $this->get_forms_expert_data($_GET['s']);
+            $this->table_data = $this->get_table_sample_data($_GET['s']);
           } else {
-            $this->table_data = $this->get_forms_expert_data();
+            $this->table_data = $this->get_table_sample_data();
           }
 
           $columns = $this->get_columns();
@@ -85,32 +82,32 @@ class Forms_Expert_List_Table extends WP_List_Table {
           $this->_column_headers = array($columns, $hidden, $sortable);
 
           /* pagination */
-          $per_page = $this->get_items_per_page('forms_expert_per_page', 20);
+          $per_page = $this->get_items_per_page('table_sample_per_page', 20);
           $current_page = $this->get_pagenum();
           $total_items = count($this->table_data);
 
           // edit
-          // if (isset($_GET['action']) && $_GET['page'] == "wc-shareholder" && $_GET['action'] == "edit") {
+          // if (isset($_GET['action']) && $_GET['page'] == "table_sample" && $_GET['action'] == "edit") {
           //       $empID = intval($_GET['employee']);
 
           //       //... do operation
           // }
 
           // delete
-          // if (isset($_GET['action']) && $_GET['page'] == "wc-shareholder" && $_GET['action'] == "delete") {
+          // if (isset($_GET['action']) && $_GET['page'] == "table_sample" && $_GET['action'] == "delete") {
           //       $empID = intval($_GET['employee']);
 
           //       //... do operation
           // }
 
           // bulk action
-          // if (isset($_GET['action']) && $_GET['page'] == "wc-shareholder" && $_GET['action'] == "delete_all") {
+          // if (isset($_GET['action']) && $_GET['page'] == "table_sample" && $_GET['action'] == "delete_all") {
           //       $empIDs = $_GET['user'];
                 
           //       //... do operation
           // }
 
-          // if (isset($_GET['action']) && $_GET['page'] == "wc-shareholder" && $_GET['action'] == "draft_all") {
+          // if (isset($_GET['action']) && $_GET['page'] == "table_sample" && $_GET['action'] == "draft_all") {
           //       $empIDs = $_GET['user'];
                 
           //       //... do operation
@@ -123,7 +120,7 @@ class Forms_Expert_List_Table extends WP_List_Table {
                 'per_page'    => $per_page // items to show on a page
           ));
 
-          // $this->table_data = $this->get_shareholder_data();
+          // $this->table_data = $this->get_table_sample_data();
           // $this->items = $this->table_data;
           $this->items = $this->table_data;
 
@@ -135,49 +132,22 @@ class Forms_Expert_List_Table extends WP_List_Table {
         switch ($column_name) {
 
             case 'ID':
-                return $item['ID'];
+                return ;
 
             case 'post_title':
-                return 
-                    $item['post_title'] .
-                    "<div class='row-actions'>
-                        <span class='edit'>شناسه: " . $item['ID'] . " | </span>
-                        <span class='edit'>
-                            <a href='". add_query_arg(['action' => 'edit', 'ID' => $item['ID'], 'status' => $item['post_status']]) ."'>تغییر وضعیت</a> | 
-                        </span>
-                        <span class='trash'>
-                            <a href='". add_query_arg(['action' => 'delete', 'ID' => $item['ID']]) ."' class='submitdelete'>حذف</a> 
-                        </span>
-                    </div>";
+                return ;
 
             case 'post_content':
-                return 
-                    "
-                    <div class='admin-model'>
-                        <label class='btn btn--blue' for='modal-" . $item['ID'] . "'>نمایش محتوا</label>
-                        <input class='modal-state' id='modal-" . $item['ID'] . "' type='checkbox' />
-                        <div class='modal'>
-                            <label class='modal__bg' for='modal-" . $item['ID'] . "'></label>
-                            <div class='modal__inner'>
-                            " . $item['post_content'] . "       
-                            </div>
-                        </div>
-                    </div>    
-                    ";                       
+                return ;                       
 
             case 'post_author':
-                $user_info = tr_query()->table('dip_users')->findById($item['post_author'])->select('ID', 'user_login', 'display_name')->get();
-                return "<a href='" . admin_url('/user-edit.php?user_id=') . $user_info['ID'] . "' target='_blank'>" . $user_info['display_name'] . "</a>";
+                return ;
 
             case 'post_date':
-                return parsidate("Y-m-d h:i:s", $item['post_date'], "per");
+                return ;
 
             case 'post_status':
-                if( $item['post_status'] ) {
-                    return "<span style='color: #238d00;'>بررسی شده</span>";
-                } else {
-                    return "<span style='color: #e10000;'>بررسی نشده</span>";
-                }
+                return ;
 
             default:
                 return print_r($item, true); //Show the whole array for troubleshooting purposes

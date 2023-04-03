@@ -2,10 +2,10 @@
 
 if ( ! defined( 'ABSPATH' ) ) { die; } // Cannot access directly.
 
-// Role && Capability: graphicer - نقش و دسترسی گرافیست
+// Role && Capability: role-sample - نمونه نقش و دسترسی
 
 tr_roles()->add(
-    'graphicer', 
+    'roel name', 
     ['read' => true],
-    'گرافیست'
+    'نام نقش'
 );

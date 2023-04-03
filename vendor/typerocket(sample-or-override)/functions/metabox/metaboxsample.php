@@ -2,4 +2,4 @@
 
 if ( ! defined( 'ABSPATH' ) ) { die; } // Cannot access directly.
 
-// Meta Box: consultant - متادیتای مشاوره
+// Meta Box: metabox-sample - متادیتای نمونه
