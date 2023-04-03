@@ -13,8 +13,8 @@ $AddCompanyButton = 'ثبت شرکت';
 echo $AddCompanyForm->open();
 ?>
 
-    <input type="text" name="company_add_title">
-    <input type="textarea" name="company_add_content">
+  <input type="text" name="company_add_title">
+  <input type="textarea" name="company_add_content">
 
 <?php
 

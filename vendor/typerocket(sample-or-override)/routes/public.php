@@ -8,7 +8,6 @@
 // Run Custom Controller Method
 // $controller = new \App\Controllers\PostController;
 // $controller = $controller::test(); // test == method  /* Build the model inside the method and don't give it as argument input to the method  */
-// tr_resource_pages('Slug', 'Name');
 
 // tr_route()->get()->match('path')->do('method@Controller'); or do('method@\App\Controllers\Controller');
 // tr_route()->post()->match('path')->do('method@Controller');
